@@ -22,6 +22,10 @@ import controlImage from "../assets/images/control.jpg";
 import celeste from "../assets/images/celeste.avif";
 import baldursImage from "../assets/images/baldurs.avif";
 import falloutImage from "../assets/images/fallout.webp";
+import unchartedImage from "../assets/images/uncharted4.avif";
+import deathstrandingImage from "../assets/images/deathstranding.jpg";
+import elysiumImage from "../assets/images/discoelysium.avif";
+import persona5Image from "../assets/images/persona5.webp";
 
 export const products = [
   {
@@ -311,5 +315,53 @@ export const products = [
     discount: 60,
     image: falloutImage,
     type: "AAA",
-  }
+  },
+  {
+    id: 25,
+    title: "Uncharted 4",
+    accountLevel: 50,
+    hoursPlayed: 434,
+    items: 143,
+    achievements: 10,
+    price: 10,
+    discount: 0,
+    image: unchartedImage,
+    type: "AAA",
+  },
+  {
+    id: 26,
+    title: "Persona 5 Royal",
+    accountLevel: 43,
+    hoursPlayed: 232,
+    items: 22,
+    achievements: 103,
+    price: 5,
+    discount: 10,
+    image: persona5Image,
+    type: "AA",
+  },
+  {
+    id: 27,
+    title: "Disco Elysium",
+    accountLevel: 521,
+    hoursPlayed: 121,
+    items: 212,
+    achievements: 22,
+    price: 5,
+    discount: 40,
+    image: elysiumImage,
+    type: "A",
+  },
+  {
+    id: 28,
+    title: "Death Stranding",
+    accountLevel: 21,
+    hoursPlayed: 21,
+    items: 12,
+    achievements: 2,
+    price: 10,
+    discount: 20,
+    image: deathstrandingImage,
+    type: "AAA",
+  },
 ];
