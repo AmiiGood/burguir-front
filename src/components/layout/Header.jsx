@@ -12,24 +12,7 @@ import {
   Tag,
   Gamepad,
 } from "lucide-react";
-
-const NeonButton = ({ children, className = "", ...props }) => {
-  return (
-    <motion.button
-      className={`relative overflow-hidden group px-4 py-2 rounded-lg bg-transparent text-white font-medium ${className}`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      {...props}
-    >
-      <span className="absolute inset-0 bg-gradient-to-r from-violet-600/70 to-indigo-600/70 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></span>
-      <span className="absolute inset-0 bg-gradient-to-r from-violet-600/50 to-indigo-600/50 blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></span>
-      <span className="relative flex items-center justify-center z-10">
-        {children}
-      </span>
-    </motion.button>
-  );
-};
+import NeonButton from "./NeonButton";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -267,7 +250,7 @@ const Header = () => {
                     <ShoppingCart size={18} className="mr-2" />
                     Carrito (2)
                   </button>
-                  <NeonButton className="flex-1 justify-center">
+                  <NeonButton className="flex-1 justify-center py-2">
                     <User size={18} className="mr-2" />
                     <span>Acceder</span>
                   </NeonButton>

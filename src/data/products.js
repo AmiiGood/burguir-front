@@ -13,6 +13,15 @@ import sekiroImage from "../assets/images/sekiro.webp";
 import hollowKnightImage from "../assets/images/hollowknight.avif";
 import hadesImage from "../assets/images/hades.avif";
 import stardewValleyImage from "../assets/images/stardewvalley.jpg";
+import minecraftImage from "../assets/images/minecraft.avif";
+import strayImage from "../assets/images/stray.avif";
+import assassinsCreedImage from "../assets/images/ACValhalla.webp";
+import doomEternalImage from "../assets/images/doom.avif";
+import finalFantasyImage from "../assets/images/finalfantasy.jpg";
+import controlImage from "../assets/images/control.jpg";
+import celeste from "../assets/images/celeste.avif";
+import baldursImage from "../assets/images/baldurs.avif";
+import falloutImage from "../assets/images/fallout.webp";
 
 export const products = [
   {
@@ -195,4 +204,112 @@ export const products = [
     image: stardewValleyImage,
     type: "A",
   },
+  {
+    id: 16,
+    title: "Minecraft",
+    accountLevel: 85,
+    hoursPlayed: 1500,
+    items: 250,
+    achievements: 68,
+    price: 29.99,
+    discount: 0,
+    image: minecraftImage,
+    type: "AA",
+  },
+  {
+    id: 17,
+    title: "Stray",
+    accountLevel: 110,
+    hoursPlayed: 950,
+    items: 320,
+    achievements: 65,
+    price: 39.99,
+    discount: 25,
+    image: strayImage,
+    type: "AAA",
+  },
+  {
+    id: 18,
+    title: "Assassin's Creed Valhalla",
+    accountLevel: 73,
+    hoursPlayed: 680,
+    items: 175,
+    achievements: 62,
+    price: 59.99,
+    discount: 35,
+    image: assassinsCreedImage,
+    type: "AAA",
+  },
+  {
+    id: 19,
+    title: "DOOM Eternal",
+    accountLevel: 79,
+    hoursPlayed: 340,
+    items: 89,
+    achievements: 74,
+    price: 39.99,
+    discount: 50,
+    image: doomEternalImage,
+    type: "AAA",
+  },
+  {
+    id: 20,
+    title: "Final Fantasy VII Remake",
+    accountLevel: 86,
+    hoursPlayed: 720,
+    items: 156,
+    achievements: 80,
+    price: 59.99,
+    discount: 20,
+    image: finalFantasyImage,
+    type: "AAA",
+  },
+  {
+    id: 21,
+    title: "Control Ultimate Edition",
+    accountLevel: 68,
+    hoursPlayed: 380,
+    items: 95,
+    achievements: 58,
+    price: 39.99,
+    discount: 30,
+    image: controlImage,
+    type: "AAA",
+  },
+  {
+    id: 22,
+    title: "Celeste",
+    accountLevel: 60,
+    hoursPlayed: 240,
+    items: 45,
+    achievements: 53,
+    price: 19.99,
+    discount: 40,
+    image: celeste,
+    type: "A",
+  },
+  {
+    id: 23,
+    title: "Baldur's Gate 3",
+    accountLevel: 50,
+    hoursPlayed: 320,
+    items: 35,
+    achievements: 22,
+    price: 4.99,
+    discount: 0,
+    image: baldursImage,
+    type: "A",
+  },
+  {
+    id: 24,
+    title: "Fallout 4",
+    accountLevel: 83,
+    hoursPlayed: 760,
+    items: 195,
+    achievements: 70,
+    price: 29.99,
+    discount: 60,
+    image: falloutImage,
+    type: "AAA",
+  }
 ];

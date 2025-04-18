@@ -1,6 +1,7 @@
 import React from "react";
 import { ShoppingCart, Star, Clock, Trophy, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import NeonButton from "../layout/NeonButton";
 
 const ProductCard = ({ product }) => {
   const discountedPrice =
@@ -182,26 +183,10 @@ const ProductCard = ({ product }) => {
               )}
             </motion.div>
 
-            <motion.button
-              className="flex items-center space-x-2 bg-indigo-600 text-white px-4 py-2 rounded-md relative overflow-hidden"
-              whileHover={{
-                boxShadow: "0 0 15px 2px rgba(99, 102, 241, 0.6)",
-                backgroundColor: "#4f46e5",
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
-                initial={{ x: "-100%" }}
-                whileHover={{
-                  x: "100%",
-                  opacity: 0.2,
-                  transition: { duration: 0.5, ease: "easeInOut" },
-                }}
-              />
-              <ShoppingCart size={18} />
+            <NeonButton className="py-2 px-4">
+              <ShoppingCart size={18} className="mr-2" />
               <span>Comprar</span>
-            </motion.button>
+            </NeonButton>
           </div>
         </div>
       </motion.div>
