@@ -15,7 +15,7 @@ import hadesImage from "../assets/images/hades.avif";
 import stardewValleyImage from "../assets/images/stardewvalley.jpg";
 import minecraftImage from "../assets/images/minecraft.avif";
 import strayImage from "../assets/images/stray.avif";
-import assassinsCreedImage from "../assets/images/ACValhalla.webp";
+import assassinsCreedImage from "../assets/images/acvalhalla.png";
 import doomEternalImage from "../assets/images/doom.avif";
 import finalFantasyImage from "../assets/images/finalfantasy.jpg";
 import controlImage from "../assets/images/control.jpg";
