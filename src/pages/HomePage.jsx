@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShoppingCart,
@@ -66,7 +66,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-gray-900 flex flex-col">
       <Header
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
