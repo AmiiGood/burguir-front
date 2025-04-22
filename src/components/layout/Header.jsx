@@ -45,7 +45,7 @@ const Header = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <a
-              href="#"
+              href="/"
               className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
             >
               Inicio
@@ -92,6 +92,13 @@ const Header = () => {
               className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
             >
               Soporte
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a
+              href="/faq"
+              className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
+            >
+              FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </motion.div>
