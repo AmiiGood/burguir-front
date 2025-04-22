@@ -387,7 +387,7 @@ const FAQPage = () => {
                     href="#"
                     className="text-indigo-400 hover:text-indigo-300 flex items-center justify-center"
                   >
-                    Ver redes sociales{" "}
+                    Ver redes sociales
                     <ChevronRight size={16} className="ml-1" />
                   </a>
                 </motion.div>

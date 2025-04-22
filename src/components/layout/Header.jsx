@@ -51,35 +51,13 @@ const Header = () => {
               Inicio
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <div className="relative group">
-              <button className="flex items-center space-x-1 text-white font-medium hover:text-violet-300 transition-colors duration-300">
-                <span>Catálogo</span>
-                <ChevronDown size={16} />
-              </button>
-              <div className="absolute left-0 mt-2 w-56 bg-black/40 backdrop-blur-sm rounded-lg shadow-lg border border-white/5 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors duration-200"
-                >
-                  <Star size={14} className="inline mr-2 text-violet-400" />
-                  Cuentas Premium
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors duration-200"
-                >
-                  <Gamepad size={14} className="inline mr-2 text-violet-400" />
-                  Cuentas con Juegos
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors duration-200"
-                >
-                  <Tag size={14} className="inline mr-2 text-violet-400" />
-                  Ofertas Especiales
-                </a>
-              </div>
-            </div>
+            <a
+              href="#"
+              className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
+            >
+              Catálogo
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
             <a
               href="#"
               className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
