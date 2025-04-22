@@ -57,7 +57,6 @@ const NeonButton = ({ children, primary = true, className = "", onClick }) => {
           },
         }}
       />
-
       <motion.div
         className={`absolute inset-0 bg-gradient-to-r ${colors.innerGlow} opacity-0`}
         animate={{
@@ -69,7 +68,6 @@ const NeonButton = ({ children, primary = true, className = "", onClick }) => {
           },
         }}
       />
-
       <div className="relative z-10 flex items-center justify-center space-x-2 font-medium tracking-wide">
         {children}
       </div>
