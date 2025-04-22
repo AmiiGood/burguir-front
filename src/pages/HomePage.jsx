@@ -217,7 +217,6 @@ const HomePage = () => {
             <Particles quantity={30} />
           </div>
 
-          {/* Líneas neón */}
           <div className="absolute inset-0 overflow-hidden opacity-20">
             <NeonLine className="top-0" />
             <NeonLine className="bottom-0" />
