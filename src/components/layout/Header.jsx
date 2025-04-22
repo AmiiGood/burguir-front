@@ -16,32 +16,6 @@ import NeonButton from "./NeonButton";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const searchInputRef = useRef(null);
-
-  useEffect(() => {
-    if (searchOpen) {
-      const handleClickOutside = (event) => {
-        if (
-          searchInputRef.current &&
-          !searchInputRef.current.contains(event.target)
-        ) {
-          setSearchOpen(false);
-        }
-      };
-
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }
-  }, [searchOpen]);
-
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchOpen]);
 
   return (
     <header className="bg-black/10 backdrop-blur-sm sticky top-0 z-50 border-b border-white/5">
@@ -128,41 +102,17 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative" ref={searchInputRef}>
-              <button
-                className={`text-gray-300 hover:text-white transition-colors duration-300 ${
-                  searchOpen ? "text-white" : ""
-                }`}
-                onClick={() => setSearchOpen(!searchOpen)}
-              >
-                <Search size={20} />
+            {/* Fixed search bar in the navbar */}
+            <div className="bg-white/5 rounded-lg overflow-hidden flex items-center w-64">
+              <input
+                type="text"
+                placeholder="Buscar juegos o cuentas..."
+                className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-white p-2 text-sm placeholder-gray-400"
+                style={{ boxShadow: "none" }}
+              />
+              <button className="px-3 text-gray-300 hover:text-white">
+                <Search size={16} />
               </button>
-
-              <AnimatePresence>
-                {searchOpen && (
-                  <motion.div
-                    className="absolute right-0 mt-2 w-72"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="bg-black/30 backdrop-blur-sm rounded-lg shadow-lg p-2 border border-white/5">
-                      <div className="flex items-center bg-white/5 rounded-md overflow-hidden">
-                        <input
-                          type="text"
-                          placeholder="Buscar juegos o cuentas..."
-                          className="w-full bg-transparent border-none focus:ring-0 text-white p-2 text-sm placeholder-gray-400"
-                          autoFocus
-                        />
-                        <button className="px-3 text-gray-300 hover:text-white">
-                          <Search size={16} />
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             <button className="text-gray-300 hover:text-white transition-colors duration-300 relative">
