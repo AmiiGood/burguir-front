@@ -26,6 +26,7 @@ import FeatureCard from "../components/layout/FeaturedCard";
 import Particles from "../components/layout/Particles";
 import NeonLine from "../components/layout/NeonLine";
 import AnimatedCounter from "../components/layout/AnimatedCounter";
+import Footer from "../components/layout/Footer";
 
 const HomePage = () => {
   const handleProductClick = (productId) => {
@@ -278,6 +279,7 @@ const HomePage = () => {
           </div>
         </section>
       </main>
+      <Footer></Footer>
     </div>
   );
 };
