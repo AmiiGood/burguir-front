@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ShoppingCart,
-  ChevronRight,
-  Search,
   User,
-  Bell,
-  Menu,
-  X,
-  ChevronDown,
   ArrowRight,
   Shield,
   Zap,
@@ -21,10 +15,7 @@ import ProductGrid from "../components/product/ProductGrid";
 import { products } from "../data/products";
 import FeaturedCarousel from "../components/layout/FeaturedCarousel";
 import Testimonial from "../components/layout/Testimonios";
-import NeonButton from "../components/layout/NeonButton";
 import FeatureCard from "../components/layout/FeaturedCard";
-import Particles from "../components/layout/Particles";
-import NeonLine from "../components/layout/NeonLine";
 import AnimatedCounter from "../components/layout/AnimatedCounter";
 import Footer from "../components/layout/Footer";
 import PreFooter from "../components/layout/PreFooter";

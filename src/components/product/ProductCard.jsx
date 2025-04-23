@@ -1,196 +1,94 @@
 import React from "react";
-import { ShoppingCart, Star, Clock, Trophy, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import NeonButton from "../layout/NeonButton";
+import { Star, Clock, Trophy, Tag, ShoppingCart } from "lucide-react";
 
 const ProductCard = ({ product }) => {
-  const discountedPrice =
-    product.price - product.price * (product.discount / 100);
+  const finalPrice = product.price * (1 - product.discount / 100);
+
+  const formatPrice = (price) => {
+    return "$" + price.toFixed(2).replace(".", ",");
+  };
 
   return (
-    <div className="relative">
-      <motion.div
-        className="relative w-80 bg-gray-800 rounded-lg overflow-hidden shadow-xl group"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        whileHover={{
-          scale: 1.03,
-          transition: { duration: 0.3 },
-        }}
-      >
-        <div className="relative">
-          <motion.img
-            src={product.image}
-            alt={product.title}
-            className="w-full h-48 object-cover"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.7 }}
-          />
+    <motion.div
+      className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 h-full flex flex-col"
+      whileHover={{ y: -5, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <div className="relative overflow-hidden h-48">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+        />
 
-          {product.discount > 0 && (
-            <motion.div
-              className="absolute top-4 right-4 bg-red-500 text-white text-sm font-bold py-1 px-2 rounded-md shadow-lg z-10"
-              animate={{
-                scale: [1, 1.05, 1],
-                boxShadow: [
-                  "0 0 0 0 rgba(220, 38, 38, 0.7)",
-                  "0 0 0 10px rgba(220, 38, 38, 0)",
-                  "0 0 0 0 rgba(220, 38, 38, 0)",
-                ],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              -{product.discount}%
-            </motion.div>
-          )}
-
-          <motion.div
-            className="absolute inset-0 overflow-hidden opacity-40"
-            animate={{
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <motion.div
-              className="w-full h-0.5 bg-cyan-400 absolute top-0"
-              animate={{
-                x: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              className="w-0.5 h-full bg-pink-400 absolute right-0"
-              animate={{
-                y: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
+        <div className="absolute top-3 left-3 bg-gray-900/80 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-white">
+          {product.type}
         </div>
 
-        <div className="p-5 relative">
-          <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 rounded-full bg-white"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -20],
-                  opacity: [0, 1, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: i * 0.4,
-                  ease: "easeOut",
-                }}
-              />
-            ))}
+        {product.discount > 0 && (
+          <div className="absolute top-3 right-3 bg-indigo-600 px-2 py-1 rounded-md text-xs font-bold text-white">
+            -{product.discount}%
           </div>
+        )}
 
-          <motion.h3
-            className="text-xl font-bold text-white mb-2 relative"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.2 }}
-          >
-            {product.title}
-            <motion.span
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500"
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ duration: 1 }}
-            />
-          </motion.h3>
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-900 to-transparent" />
+      </div>
 
-          <div className="grid grid-cols-2 gap-2 my-4">
-            <motion.div
-              className="flex items-center text-gray-400"
-              whileHover={{ x: 3, color: "#fcd34d" }}
-              transition={{ duration: 0.2 }}
-            >
-              <Trophy size={16} className="mr-2 text-yellow-500" />
-              <span className="text-sm">{product.achievements} logros</span>
-            </motion.div>
+      <div className="flex-1 flex flex-col p-4">
+        <h3 className="text-white font-bold text-lg mb-2 line-clamp-2">
+          {product.title}
+        </h3>
 
-            <motion.div
-              className="flex items-center text-gray-400"
-              whileHover={{ x: 3, color: "#60a5fa" }}
-              transition={{ duration: 0.2 }}
-            >
-              <Clock size={16} className="mr-2 text-blue-400" />
-              <span className="text-sm">{product.hoursPlayed}h jugadas</span>
-            </motion.div>
-
-            <motion.div
-              className="flex items-center text-gray-400"
-              whileHover={{ x: 3, color: "#c084fc" }}
-              transition={{ duration: 0.2 }}
-            >
-              <Star size={16} className="mr-2 text-purple-400" />
-              <span className="text-sm">Nivel {product.accountLevel}</span>
-            </motion.div>
-
-            <motion.div
-              className="flex items-center text-gray-400"
-              whileHover={{ x: 3, color: "#4ade80" }}
-              transition={{ duration: 0.2 }}
-            >
-              <Users size={16} className="mr-2 text-green-400" />
-              <span className="text-sm">{product.items} items</span>
-            </motion.div>
+        <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
+          <div className="flex items-center text-gray-300">
+            <Clock size={14} className="mr-1 text-indigo-400" />
+            <span>{product.hoursPlayed}h jugadas</span>
           </div>
+          <div className="flex items-center text-gray-300">
+            <Trophy size={14} className="mr-1 text-yellow-500" />
+            <span>{product.achievements} logros</span>
+          </div>
+          <div className="flex items-center text-gray-300">
+            <Star size={14} className="mr-1 text-purple-400" />
+            <span>Nivel {product.accountLevel}</span>
+          </div>
+          <div className="flex items-center text-gray-300">
+            <Tag size={14} className="mr-1 text-emerald-400" />
+            <span>{product.items} items</span>
+          </div>
+        </div>
 
-          <div className="mt-4 flex justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0.9 }}
-              whileHover={{ scale: 1.05, opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              {product.discount > 0 ? (
-                <div className="flex flex-col">
-                  <span className="text-gray-400 line-through text-sm">
-                    ${product.price.toFixed(2)}
-                  </span>
-                  <span className="text-white font-bold text-xl">
-                    ${discountedPrice.toFixed(2)}
-                  </span>
-                </div>
-              ) : (
-                <span className="text-white font-bold text-xl">
-                  ${product.price.toFixed(2)}
+        <div className="mt-auto pt-4 border-t border-gray-700 flex justify-between items-center">
+          <div className="flex flex-col">
+            {product.discount > 0 ? (
+              <>
+                <span className="text-gray-400 text-sm line-through">
+                  {formatPrice(product.price)}
                 </span>
-              )}
-            </motion.div>
-
-            <NeonButton className="py-2 px-4">
-              <ShoppingCart size={18} className="mr-2" />
-              <span>Comprar</span>
-            </NeonButton>
+                <span className="text-white font-bold text-lg">
+                  {formatPrice(finalPrice)}
+                </span>
+              </>
+            ) : (
+              <span className="text-white font-bold text-lg">
+                {formatPrice(product.price)}
+              </span>
+            )}
           </div>
+
+          <motion.button
+            className="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-lg flex items-center justify-center transition-colors duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ShoppingCart size={20} />
+          </motion.button>
         </div>
-      </motion.div>
-    </div>
+      </div>
+
+      <div className="h-1 w-full bg-gradient-to-r from-indigo-600 via-purple-500 to-indigo-600 shadow-lg shadow-indigo-500/50" />
+    </motion.div>
   );
 };
 

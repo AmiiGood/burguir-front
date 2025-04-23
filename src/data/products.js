@@ -230,7 +230,7 @@ export const products = [
     price: 39.99,
     discount: 25,
     image: strayImage,
-    type: "AAA",
+    type: "AA",
   },
   {
     id: 18,

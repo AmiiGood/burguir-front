@@ -1,17 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search,
-  User,
-  Bell,
-  Menu,
-  X,
-  ChevronDown,
-  ShoppingCart,
-  Star,
-  Tag,
-  Gamepad,
-} from "lucide-react";
+import { Search, User, Bell, Menu, X, ShoppingCart } from "lucide-react";
 import NeonButton from "./NeonButton";
 
 const Header = () => {
@@ -52,7 +41,7 @@ const Header = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
-              href="#"
+              href="/catalogo"
               className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
             >
               Catálogo
@@ -87,7 +76,6 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Fixed search bar in the navbar */}
             <div className="bg-white/5 rounded-lg overflow-hidden flex items-center w-64">
               <input
                 type="text"
