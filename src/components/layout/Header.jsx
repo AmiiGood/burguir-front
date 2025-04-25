@@ -48,7 +48,7 @@ const Header = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
-              href="#"
+              href="/ofertas"
               className="text-white font-medium hover:text-violet-300 transition-colors duration-300 relative group"
             >
               Ofertas
@@ -140,21 +140,21 @@ const Header = () => {
                 </div>
 
                 <a
-                  href="#"
+                  href="/"
                   className="text-white font-medium hover:text-violet-300 transition-colors duration-300 flex items-center"
                 >
                   <span className="w-1 h-6 bg-violet-500 rounded-full mr-3"></span>
                   Inicio
                 </a>
                 <a
-                  href="#"
+                  href="/catalogo"
                   className="text-white font-medium hover:text-violet-300 transition-colors duration-300 flex items-center"
                 >
                   <span className="w-1 h-6 bg-transparent rounded-full mr-3"></span>
                   Catálogo
                 </a>
                 <a
-                  href="#"
+                  href="/ofertas"
                   className="text-white font-medium hover:text-violet-300 transition-colors duration-300 flex items-center"
                 >
                   <span className="w-1 h-6 bg-transparent rounded-full mr-3"></span>

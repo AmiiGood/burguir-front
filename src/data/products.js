@@ -365,3 +365,51 @@ export const products = [
     type: "AAA",
   },
 ];
+
+export const offers = [
+  {
+    id: 1,
+    name: "Paquete Soulsborne",
+    products: [4, 12, 13],
+    originalPrice: 134.97,
+    discountPercentage: 30,
+    discountedPrice: 94.48,
+    type: "bundle",
+  },
+  {
+    id: 2,
+    name: "Mundo en Caos",
+    products: [3, 24, 19],
+    originalPrice: 109.97,
+    discountPercentage: 40,
+    discountedPrice: 65.98,
+    type: "bundle",
+  },
+  {
+    id: 3,
+    name: "Historias Inolvidables",
+    products: [1, 7, 5],
+    originalPrice: 169.97,
+    discountPercentage: 25,
+    discountedPrice: 127.48,
+    type: "bundle",
+  },
+  {
+    id: 4,
+    name: "Pack Fantasía y Magia",
+    products: [8, 11, 20],
+    originalPrice: 169.97,
+    discountPercentage: 30,
+    discountedPrice: 118.98,
+    type: "bundle",
+  },
+  {
+    id: 5,
+    name: "Indie Brillante",
+    products: [22, 27, 14],
+    originalPrice: 49.97,
+    discountPercentage: 35,
+    discountedPrice: 32.48,
+    type: "bundle",
+  },
+];

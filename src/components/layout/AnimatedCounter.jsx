@@ -10,7 +10,7 @@ const AnimatedCounter = ({ value, label, icon: Icon }) => {
     if (isInView) {
       let startValue = 0;
       const endValue = value;
-      const duration = 2000; // 2 seconds animation
+      const duration = 2000;
       const startTime = performance.now();
 
       const updateCounter = (timestamp) => {
