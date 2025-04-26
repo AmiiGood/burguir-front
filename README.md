@@ -98,6 +98,8 @@ steamkey-store/
 
 ![Página de Inicio](readme-assets/inicio.png)
 ![Catálogo de Productos](readme-assets/catalogo.png)
+![Página del Carrito](readme-assets/carrito.png)
+![Página de FAQ](readme-assets/FAQ.png)
 
 ## 📈 Estadísticas
 
