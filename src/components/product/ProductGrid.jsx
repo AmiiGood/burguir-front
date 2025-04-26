@@ -1,7 +1,14 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import { useCart } from "./CartContext";
 
 const ProductGrid = ({ products }) => {
+  const cart = useCart();
+
+  if (!cart) {
+    console.warn("Cart context not available in ProductGrid");
+  }
+
   const discountedAaaProducts = products
     .filter((product) => product.type === "AAA" && product.discount > 0)
     .sort((a, b) => b.discount - a.discount)

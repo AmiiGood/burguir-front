@@ -8,8 +8,15 @@ import ProductCard from "../components/product/ProductCard";
 import CatalogFilters from "../components/catalogo/CatalogoFilters";
 import CatalogPaginator from "../components/catalogo/CatalogoPaginator";
 import { products } from "../data/products";
+import { useCart } from "../components/product/CartContext";
 
 const CatalogPage = () => {
+  const cart = useCart();
+
+  if (!cart) {
+    console.warn("Cart context not available in CatalogPage");
+  }
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -24,6 +31,13 @@ const CatalogPage = () => {
 
   const productsPerPage = 12;
 
+  const calculateFinalPrice = (price, discount) => {
+    if (cart?.calculateFinalPrice) {
+      return cart.calculateFinalPrice(price, discount);
+    }
+    return price * (1 - discount / 100);
+  };
+
   useEffect(() => {
     let result = [...products];
 
@@ -35,7 +49,7 @@ const CatalogPage = () => {
     }
 
     result = result.filter((product) => {
-      const finalPrice = product.price * (1 - product.discount / 100);
+      const finalPrice = calculateFinalPrice(product.price, product.discount);
       return (
         finalPrice >= filters.priceRange[0] &&
         finalPrice <= filters.priceRange[1]
@@ -54,13 +68,15 @@ const CatalogPage = () => {
       case "priceAsc":
         result.sort(
           (a, b) =>
-            a.price * (1 - a.discount / 100) - b.price * (1 - b.discount / 100)
+            calculateFinalPrice(a.price, a.discount) -
+            calculateFinalPrice(b.price, b.discount)
         );
         break;
       case "priceDesc":
         result.sort(
           (a, b) =>
-            b.price * (1 - b.discount / 100) - a.price * (1 - a.discount / 100)
+            calculateFinalPrice(b.price, b.discount) -
+            calculateFinalPrice(a.price, a.discount)
         );
         break;
       case "nameAsc":
@@ -72,12 +88,13 @@ const CatalogPage = () => {
       case "discount":
         result.sort((a, b) => b.discount - a.discount);
         break;
+      default:
         result.sort((a, b) => b.hoursPlayed - a.hoursPlayed);
         break;
     }
 
     setFilteredProducts(result);
-  }, [filters]);
+  }, [filters, cart]);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -89,6 +106,7 @@ const CatalogPage = () => {
 
   const handleFilterChange = (newFilters) => {
     setFilters({ ...filters, ...newFilters });
+    setCurrentPage(1);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -194,6 +212,16 @@ const CatalogPage = () => {
                   </span>{" "}
                   resultados
                 </p>
+                \
+                {cart && cart.getCartTotals && (
+                  <p className="text-gray-300">
+                    Carrito:{" "}
+                    <span className="font-medium text-white">
+                      {cart.getCartTotals().totalItems}
+                    </span>{" "}
+                    productos
+                  </p>
+                )}
               </div>
               {filteredProducts.length === 0 ? (
                 <div className="bg-gray-800 rounded-lg p-10 text-center">

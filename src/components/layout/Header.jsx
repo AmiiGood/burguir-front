@@ -1,10 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, User, Bell, Menu, X, ShoppingCart } from "lucide-react";
+import {
+  Search,
+  User,
+  Bell,
+  Menu,
+  X,
+  ShoppingCart,
+  Trash2,
+  ChevronRight,
+} from "lucide-react";
 import NeonButton from "./NeonButton";
+import { useCart } from "../product/CartContext";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cartModalOpen, setCartModalOpen] = useState(false);
+  const cartModalRef = useRef(null);
+
+  const cart = useCart();
+  const cartItems = cart?.cartItems || [];
+  const cartItemCount = cart
+    ? cart.getCartTotals
+      ? cart.getCartTotals().totalItems
+      : 0
+    : 0;
+  const total = cart?.getCartTotals ? cart.getCartTotals().total : 0;
+
+  const removeFromCart = (productId) => {
+    if (cart?.removeFromCart) {
+      cart.removeFromCart(productId);
+    } else {
+      console.warn("Cart context not available. Cannot remove from cart.");
+    }
+  };
+
+  const formatPrice = (price) => {
+    if (cart?.formatPrice) {
+      return cart.formatPrice(price);
+    }
+    return "$" + price.toFixed(2).replace(".", ",");
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        cartModalRef.current &&
+        !cartModalRef.current.contains(event.target)
+      ) {
+        setCartModalOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="bg-black/10 backdrop-blur-sm sticky top-0 z-50 border-b border-white/5">
@@ -93,11 +145,16 @@ const Header = () => {
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-violet-500 rounded-full"></span>
             </button>
 
-            <button className="text-gray-300 hover:text-white transition-colors duration-300 relative">
+            <button
+              onClick={() => setCartModalOpen(!cartModalOpen)}
+              className="text-gray-300 hover:text-white transition-colors duration-300 relative"
+            >
               <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-violet-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                2
-              </span>
+              {cartItemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-violet-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
             </button>
 
             <NeonButton className="py-1.5 px-4">
@@ -115,6 +172,111 @@ const Header = () => {
             </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {cartModalOpen && (
+            <motion.div
+              ref={cartModalRef}
+              className="absolute right-0 top-full mt-2 w-96 bg-gray-800/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="p-4 border-b border-white/10 flex justify-between items-center">
+                <h3 className="font-bold text-white">
+                  Carrito ({cartItemCount})
+                </h3>
+                <button
+                  onClick={() => setCartModalOpen(false)}
+                  className="text-gray-400 hover:text-white"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="max-h-80 overflow-y-auto">
+                {cartItems.length === 0 ? (
+                  <div className="p-6 text-center">
+                    <div className="w-16 h-16 rounded-full bg-gray-700/50 mx-auto flex items-center justify-center mb-3">
+                      <ShoppingCart size={24} className="text-gray-400" />
+                    </div>
+                    <p className="text-gray-300 mb-2">Tu carrito está vacío</p>
+                    <p className="text-gray-400 text-sm">
+                      Explora nuestro catálogo para encontrar tus juegos
+                      favoritos
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    {cartItems.map((item) => (
+                      <div
+                        key={item.id}
+                        className="p-3 border-b border-white/5 flex items-center hover:bg-white/5 transition-colors"
+                      >
+                        <div className="w-12 h-12 rounded-md overflow-hidden mr-3">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-white text-sm font-medium truncate">
+                            {item.title}
+                          </h4>
+                          <div className="flex items-center mt-1">
+                            <span className="text-indigo-400 text-xs font-bold">
+                              {formatPrice(
+                                item.price * (1 - item.discount / 100)
+                              )}
+                            </span>
+                            {item.discount > 0 && (
+                              <span className="text-gray-400 text-xs line-through ml-2">
+                                {formatPrice(item.price)}
+                              </span>
+                            )}
+                            <span className="text-gray-400 text-xs ml-auto">
+                              x{item.quantity}
+                            </span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-gray-400 hover:text-red-400 ml-2"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="p-4 bg-gray-900/50 border-t border-white/10">
+                <div className="flex justify-between mb-4">
+                  <span className="text-gray-300">Total:</span>
+                  <span className="text-white font-bold">
+                    {formatPrice(total)}
+                  </span>
+                </div>
+
+                <div className="flex space-x-3">
+                  <a
+                    href="/cart"
+                    className="flex-1 bg-gray-700 hover:bg-gray-600 text-white rounded-lg py-2 text-center transition-colors duration-300"
+                  >
+                    Ver carrito
+                  </a>
+                  <NeonButton className="flex-1 justify-center py-2">
+                    <span>Pagar</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </NeonButton>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {mobileMenuOpen && (
@@ -169,9 +331,15 @@ const Header = () => {
                 </a>
 
                 <div className="flex space-x-3 pt-2">
-                  <button className="flex-1 py-2 bg-white/5 text-white rounded-lg hover:bg-white/10 transition-colors duration-300 flex items-center justify-center">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setCartModalOpen(true);
+                    }}
+                    className="flex-1 py-2 bg-white/5 text-white rounded-lg hover:bg-white/10 transition-colors duration-300 flex items-center justify-center"
+                  >
                     <ShoppingCart size={18} className="mr-2" />
-                    Carrito (2)
+                    Carrito ({cartItemCount})
                   </button>
                   <NeonButton className="flex-1 justify-center py-2">
                     <User size={18} className="mr-2" />
