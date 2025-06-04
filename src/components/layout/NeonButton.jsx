@@ -111,7 +111,6 @@ const NeonButton = ({
       onClick={internalOnClick}
       disabled={actualDisabled}
     >
-      {/* Contenedor para las partículas, necesita estar encima del fondo pero debajo del texto */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <AnimatePresence>
           {particles.map((p) => (
@@ -140,7 +139,6 @@ const NeonButton = ({
         </AnimatePresence>
       </div>
 
-      {/* Efectos de brillo existentes (asegúrate que estén por encima de las partículas si es necesario o ajustar z-index) */}
       <motion.div
         className={`absolute inset-0 bg-gradient-to-r ${colors.innerGlow} opacity-0 z-0`}
         initial={{ x: "-110%" }}
@@ -176,13 +174,11 @@ const NeonButton = ({
         }
       />
 
-      {/* Contenido del botón */}
       <div className="relative z-10 flex items-center justify-center space-x-2 font-medium tracking-wide">
         {isLoading ? (
           <>
             <Loader2 className="animate-spin" size={children ? 18 : 24} />
             {children && <span>Cargando...</span>}{" "}
-            {/* O un texto personalizable */}
           </>
         ) : (
           children
