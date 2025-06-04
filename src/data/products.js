@@ -1,3 +1,4 @@
+//Imagenes
 import cyberpunkImage from "../assets/images/cyberpunk.avif";
 import tlou2Image from "../assets/images/thelastofusp2.jpg";
 import gtaVImage from "../assets/images/gtaV.webp";
@@ -5,9 +6,9 @@ import eldenringImage from "../assets/images/eldenring.avif";
 import rdr2Image from "../assets/images/rdr2.jpg";
 import horizonImage from "../assets/images/horizon.webp";
 import godOfWarImage from "../assets/images/gow.jpg";
-import witcher3Image from "../assets/images/thewitcher.jpg";
+import witcher4Image from "../assets/images/the_witcher_4.jpeg";
 import ghostOfTsushimaImage from "../assets/images/ghostoftsushima.jpg";
-import spidermanImage from "../assets/images/spiderman.jpg";
+import spidermanImage from "../assets/images/spiderman2.jpg";
 import hogwartsLegacyImage from "../assets/images/hogwartslegacy.avif";
 import sekiroImage from "../assets/images/sekiro.webp";
 import hollowKnightImage from "../assets/images/hollowknight.avif";
@@ -15,7 +16,7 @@ import hadesImage from "../assets/images/hades.avif";
 import stardewValleyImage from "../assets/images/stardewvalley.jpg";
 import minecraftImage from "../assets/images/minecraft.avif";
 import strayImage from "../assets/images/stray.avif";
-import assassinsCreedImage from "../assets/images/acvalhalla.png";
+import assassinsCreedImage from "../assets/images/acshadows.avif";
 import doomEternalImage from "../assets/images/doom.avif";
 import finalFantasyImage from "../assets/images/finalfantasy.jpg";
 import controlImage from "../assets/images/control.jpg";
@@ -26,6 +27,36 @@ import unchartedImage from "../assets/images/uncharted4.avif";
 import deathstrandingImage from "../assets/images/deathstranding.jpg";
 import elysiumImage from "../assets/images/discoelysium.avif";
 import persona5Image from "../assets/images/persona5.webp";
+
+//Previews
+import tlou2Preview from "../assets/previews/tlou2.gif";
+import gtaVPreview from "../assets/previews/gtaV.gif";
+import cyberpunkPreview from "../assets/previews/cyberpunk.gif";
+import eldenringPreview from "../assets/previews/eldenring.gif";
+import rdr2Preview from "../assets/previews/rdr2.gif";
+import horizonPreview from "../assets/previews/horizon.gif";
+import gowRagnarokPreview from "../assets/previews/gowRagnarok.gif";
+import thewitcher4Preview from "../assets/previews/thewitcher4.gif";
+import ghostOfTsushimaPreview from "../assets/previews/ghostoftsushima.gif";
+import spidermanPreview from "../assets/previews/spiderman2.gif";
+import hogwartsLegacyPreview from "../assets/previews/hogwartsLegacy.gif";
+import sekiroPreview from "../assets/previews/sekiro.gif";
+import hollowKnightPreview from "../assets/previews/hollowknight.gif";
+import hadesPreview from "../assets/previews/hades.gif";
+import stardewValleyPreview from "../assets/previews/stardewvalley.gif";
+import minecraftPreview from "../assets/previews/minecraft.gif";
+import strayPreview from "../assets/previews/stray.gif";
+import assassinsCreedImagePreview from "../assets/previews/acshadows.gif";
+import doomEternalImagePreview from "../assets/previews/doom.gif";
+import finalFantasyImagePreview from "../assets/previews/finalfantasyVII.gif";
+import controlImagePreview from "../assets/previews/control.gif";
+import celestePreview from "../assets/previews/celeste.gif";
+import baldursImagePreview from "../assets/previews/baldurs.gif";
+import falloutImagePreview from "../assets/previews/fallout4.gif";
+import unchartedImagePreview from "../assets/previews/uncharted4.gif";
+import persona5ImagePreview from "../assets/previews/persona5.gif";
+import elysiumImagePreview from "../assets/previews/discoelysium.gif";
+import deathstrandingImagePreview from "../assets/previews/deathStranding.gif";
 
 export const products = [
   {
@@ -38,11 +69,13 @@ export const products = [
     price: 49.99,
     discount: 40,
     image: tlou2Image,
+    youtubeVideoId: "O6MdexNSy3o",
+    hoverPreview: tlou2Preview,
     type: "AAA",
   },
   {
     id: 2,
-    title: "GTA V Premium",
+    title: "GTA V",
     accountLevel: 120,
     hoursPlayed: 890,
     items: 235,
@@ -50,6 +83,8 @@ export const products = [
     price: 59.99,
     discount: 0,
     image: gtaVImage,
+    youtubeVideoId: "VNbONMSObfs",
+    hoverPreview: gtaVPreview,
     type: "AAA",
   },
   {
@@ -62,6 +97,8 @@ export const products = [
     price: 39.99,
     discount: 25,
     image: cyberpunkImage,
+    youtubeVideoId: "1gvGn8NtIpE",
+    hoverPreview: cyberpunkPreview,
     type: "AAA",
   },
   {
@@ -74,6 +111,8 @@ export const products = [
     price: 69.99,
     discount: 10,
     image: eldenringImage,
+    youtubeVideoId: "E3Huy2cdih0",
+    hoverPreview: eldenringPreview,
     type: "AAA",
   },
   {
@@ -86,6 +125,8 @@ export const products = [
     price: 54.99,
     discount: 20,
     image: rdr2Image,
+    youtubeVideoId: "SXvQ1nK4oxk",
+    hoverPreview: rdr2Preview,
     type: "AAA",
   },
   {
@@ -98,6 +139,8 @@ export const products = [
     price: 59.99,
     discount: 15,
     image: horizonImage,
+    youtubeVideoId: "rvDu47W8qT0",
+    hoverPreview: horizonPreview,
     type: "AAA",
   },
   {
@@ -110,18 +153,22 @@ export const products = [
     price: 64.99,
     discount: 5,
     image: godOfWarImage,
+    youtubeVideoId: "nBwxyqq1ON4",
+    hoverPreview: gowRagnarokPreview,
     type: "AAA",
   },
   {
     id: 8,
-    title: "The Witcher 3: Wild Hunt",
+    title: "The Witcher 4: Polaris",
     accountLevel: 88,
     hoursPlayed: 980,
     items: 215,
     achievements: 83,
     price: 39.99,
     discount: 30,
-    image: witcher3Image,
+    image: witcher4Image,
+    youtubeVideoId: "lOAiB3GZOQo",
+    hoverPreview: thewitcher4Preview,
     type: "AAA",
   },
   {
@@ -134,11 +181,13 @@ export const products = [
     price: 49.99,
     discount: 10,
     image: ghostOfTsushimaImage,
+    youtubeVideoId: "BWktKH0eW5I",
+    hoverPreview: ghostOfTsushimaPreview,
     type: "AAA",
   },
   {
     id: 10,
-    title: "Spider-Man: Miles Morales",
+    title: "Spider-Man 2",
     accountLevel: 63,
     hoursPlayed: 420,
     items: 107,
@@ -146,7 +195,8 @@ export const products = [
     price: 44.99,
     discount: 15,
     image: spidermanImage,
-    type: "AA",
+    hoverPreview: spidermanPreview,
+    type: "AAA",
   },
   {
     id: 11,
@@ -158,7 +208,8 @@ export const products = [
     price: 69.99,
     discount: 0,
     image: hogwartsLegacyImage,
-    type: "AAA",
+    hoverPreview: hogwartsLegacyPreview,
+    type: "AA",
   },
   {
     id: 12,
@@ -170,6 +221,8 @@ export const products = [
     price: 49.99,
     discount: 20,
     image: sekiroImage,
+    youtubeVideoId: "rXMX4YJ7Lks",
+    hoverPreview: sekiroPreview,
     type: "AAA",
   },
   {
@@ -182,6 +235,7 @@ export const products = [
     price: 14.99,
     discount: 35,
     image: hollowKnightImage,
+    hoverPreview: hollowKnightPreview,
     type: "A",
   },
   {
@@ -194,6 +248,7 @@ export const products = [
     price: 24.99,
     discount: 20,
     image: hadesImage,
+    hoverPreview: hadesPreview,
     type: "AA",
   },
   {
@@ -206,6 +261,7 @@ export const products = [
     price: 14.99,
     discount: 0,
     image: stardewValleyImage,
+    hoverPreview: stardewValleyPreview,
     type: "A",
   },
   {
@@ -218,6 +274,7 @@ export const products = [
     price: 29.99,
     discount: 0,
     image: minecraftImage,
+    hoverPreview: minecraftPreview,
     type: "AA",
   },
   {
@@ -230,11 +287,12 @@ export const products = [
     price: 39.99,
     discount: 25,
     image: strayImage,
+    hoverPreview: strayPreview,
     type: "AA",
   },
   {
     id: 18,
-    title: "Assassin's Creed Valhalla",
+    title: "Assassin's Creed Shadows",
     accountLevel: 73,
     hoursPlayed: 680,
     items: 175,
@@ -242,11 +300,13 @@ export const products = [
     price: 59.99,
     discount: 35,
     image: assassinsCreedImage,
+    youtubeVideoId: "Xs2w3qSEBCs",
+    hoverPreview: assassinsCreedImagePreview,
     type: "AAA",
   },
   {
     id: 19,
-    title: "DOOM Eternal",
+    title: "DOOM: The Dark Ages",
     accountLevel: 79,
     hoursPlayed: 340,
     items: 89,
@@ -254,6 +314,8 @@ export const products = [
     price: 39.99,
     discount: 50,
     image: doomEternalImage,
+    youtubeVideoId: "P4wvc_zDHpA",
+    hoverPreview: doomEternalImagePreview,
     type: "AAA",
   },
   {
@@ -266,6 +328,7 @@ export const products = [
     price: 59.99,
     discount: 20,
     image: finalFantasyImage,
+    hoverPreview: finalFantasyImagePreview,
     type: "AAA",
   },
   {
@@ -278,7 +341,8 @@ export const products = [
     price: 39.99,
     discount: 30,
     image: controlImage,
-    type: "AAA",
+    hoverPreview: controlImagePreview,
+    type: "AA",
   },
   {
     id: 22,
@@ -290,6 +354,7 @@ export const products = [
     price: 19.99,
     discount: 40,
     image: celeste,
+    hoverPreview: celestePreview,
     type: "A",
   },
   {
@@ -302,7 +367,8 @@ export const products = [
     price: 4.99,
     discount: 0,
     image: baldursImage,
-    type: "A",
+    hoverPreview: baldursImagePreview,
+    type: "AAA",
   },
   {
     id: 24,
@@ -314,7 +380,8 @@ export const products = [
     price: 29.99,
     discount: 60,
     image: falloutImage,
-    type: "AAA",
+    hoverPreview: falloutImagePreview,
+    type: "AA",
   },
   {
     id: 25,
@@ -326,6 +393,7 @@ export const products = [
     price: 10,
     discount: 0,
     image: unchartedImage,
+    hoverPreview: unchartedImagePreview,
     type: "AAA",
   },
   {
@@ -338,6 +406,7 @@ export const products = [
     price: 5,
     discount: 10,
     image: persona5Image,
+    hoverPreview: persona5ImagePreview,
     type: "AA",
   },
   {
@@ -350,6 +419,7 @@ export const products = [
     price: 5,
     discount: 40,
     image: elysiumImage,
+    hoverPreview: elysiumImagePreview,
     type: "A",
   },
   {
@@ -362,6 +432,7 @@ export const products = [
     price: 10,
     discount: 20,
     image: deathstrandingImage,
+    hoverPreview: deathstrandingImagePreview,
     type: "AAA",
   },
 ];

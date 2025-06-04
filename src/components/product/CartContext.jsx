@@ -19,6 +19,8 @@ export const CartProvider = ({ children }) => {
     type: "success",
   });
 
+  const [cartUpdateTrigger, setCartUpdateTrigger] = useState(0);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -54,6 +56,7 @@ export const CartProvider = ({ children }) => {
         return [...prevItems, { ...product, quantity: 1 }];
       }
     });
+    setCartUpdateTrigger((prev) => prev + 1);
   };
 
   const removeFromCart = (productId, productName) => {
@@ -127,6 +130,7 @@ export const CartProvider = ({ children }) => {
     formatPrice,
     calculateFinalPrice,
     showToast,
+    cartUpdateTrigger,
   };
 
   return (
