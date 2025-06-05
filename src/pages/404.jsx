@@ -5,7 +5,7 @@ import Header from "../components/layout/Header";
 import NeonButton from "../components/layout/NeonButton";
 import Particles from "../components/layout/Particles";
 import NeonLine from "../components/layout/NeonLine";
-import _404Image from "../assets/images/404.jpg";
+import _404Image from "../assets/images/principalImages/404.jpg";
 
 const Error404Page = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
