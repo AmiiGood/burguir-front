@@ -9,7 +9,7 @@ import {
   Check,
   Loader2,
 } from "lucide-react";
-import { useCart } from "./CartContext"; // Asegúrate que la ruta es correcta
+import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
   const calculateFinalPrice = (price, discount) =>
     cart?.calculateFinalPrice
       ? cart.calculateFinalPrice(price, discount)
-      : price * (1 - (discount || 0) / 100); // Agregado fallback para discount
+      : price * (1 - (discount || 0) / 100);
 
   const finalPrice = calculateFinalPrice(product.price, product.discount);
 
@@ -58,16 +58,14 @@ const ProductCard = ({ product }) => {
 
   const handleMouseEnter = () => {
     setIsHovering(true);
-    if (hasValidPreview && !isPreviewLoading) { // Evitar recargar si ya está cargando
+    if (hasValidPreview && !isPreviewLoading) {
       setIsPreviewLoading(true);
     }
   };
 
   const handleMouseLeave = () => {
     setIsHovering(false);
-    // No es necesario setIsPreviewLoading(false) aquí directamente, 
-    // se maneja por onLoadedData/onLoad o si el hover termina antes de cargar.
-    if (isPreviewLoading && !shouldShowPreviewContainer) { // Si se deja de hacer hover mientras cargaba
+    if (isPreviewLoading && !shouldShowPreviewContainer) { 
         setIsPreviewLoading(false);
     }
   };
@@ -78,15 +76,12 @@ const ProductCard = ({ product }) => {
 
   const handlePreviewMediaError = (mediaType) => {
     console.error(`Error al cargar ${mediaType} preview:`, product.hoverPreview);
-    setIsPreviewLoading(false); // Detener el loader también en caso de error
+    setIsPreviewLoading(false); 
   };
 
 
   useEffect(() => {
-    // Este useEffect podría no ser necesario si la lógica de carga ya está en handleMouseEnter/Leave
-    // y handlePreviewMediaLoaded. Si decides mantenerlo, asegúrate que su lógica es la deseada.
-    // Por ejemplo, si se hace hover rápido, `isPreviewLoading` podría quedar en true.
-    if (isHovering && hasValidPreview && !product.hoverPreview) { // Si hay preview válido pero no URL (raro)
+    if (isHovering && hasValidPreview && !product.hoverPreview) { 
         setIsPreviewLoading(false);
     }
   }, [product.hoverPreview, isHovering, hasValidPreview]);
@@ -100,12 +95,11 @@ const ProductCard = ({ product }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* {showAddAnimation && <motion.div />} Animación de añadir al carrito (si la tienes definida) */}
       <Link
         to={`/producto/${product.id}`}
         className="block cursor-pointer group"
       >
-        <div className="relative overflow-hidden h-48"> {/* Contenedor de altura fija */}
+        <div className="relative overflow-hidden h-48">
           <AnimatePresence initial={false}>
             {!shouldShowPreviewContainer && (
               <motion.img
@@ -121,8 +115,8 @@ const ProductCard = ({ product }) => {
             )}
             {shouldShowPreviewContainer && (
               <motion.div
-                key="preview-container" // Renombrado para claridad
-                className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-700" // bg-gray-700 es el fondo del contenedor del preview
+                key="preview-container" 
+                className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-700" 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -135,8 +129,8 @@ const ProductCard = ({ product }) => {
                 )}
                 {hasVideoPreview ? (
                   <motion.video
-                    key={`video-${product.id}`} // Clave única basada en el producto
-                    className="w-full h-full object-cover" // Asegura que llene el espacio
+                    key={`video-${product.id}`}
+                    className="w-full h-full object-cover" 
                     src={product.hoverPreview}
                     autoPlay
                     loop
@@ -144,15 +138,15 @@ const ProductCard = ({ product }) => {
                     playsInline
                     onLoadedData={handlePreviewMediaLoaded}
                     onError={() => handlePreviewMediaError('video')}
-                    initial={{ opacity: isPreviewLoading ? 0 : 1 }} // Evitar flash si carga rápido
+                    initial={{ opacity: isPreviewLoading ? 0 : 1 }} 
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }} // Transición para el video mismo
+                    transition={{ duration: 0.15 }} 
                   />
-                ) : hasGifPreview ? ( // Asegurarse que es un GIF
+                ) : hasGifPreview ? ( 
                   <motion.img
-                    key={`gif-${product.id}`} // Clave única basada en el producto
-                    className="w-full h-full object-cover" // Asegura que llene el espacio
+                    key={`gif-${product.id}`} 
+                    className="w-full h-full object-cover" 
                     src={product.hoverPreview}
                     alt={`${product.title} preview`}
                     onLoad={handlePreviewMediaLoaded}
@@ -227,11 +221,11 @@ const ProductCard = ({ product }) => {
               isInCart
                 ? "bg-green-600 hover:bg-green-700"
                 : "bg-indigo-600 hover:bg-indigo-700"
-            } text-white p-2 rounded-lg flex items-center justify-center transition-colors duration-300 z-10`} // z-10 para que esté sobre otros elementos si es necesario
+            } text-white p-2 rounded-lg flex items-center justify-center transition-colors duration-300 z-10`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
-            disabled={showAddAnimation} // Considera deshabilitar también si isPreviewLoading para evitar clics mientras carga
+            disabled={showAddAnimation}
           >
             {isInCart ? <Check size={20} /> : <ShoppingCart size={20} />}
           </motion.button>

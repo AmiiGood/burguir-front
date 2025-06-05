@@ -170,7 +170,6 @@ const Header = () => {
             </NeonButton>
           </motion.div>
 
-          {/* Menú móvil (sin cambios relevantes para esta animación) */}
           <div className="md:hidden">
             <button
               className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -181,7 +180,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Modal del carrito (sin cambios relevantes para esta animación) */}
         <AnimatePresence>
           {cartModalOpen && (
              <motion.div
@@ -284,7 +282,6 @@ const Header = () => {
           )}
         </AnimatePresence>
 
-        {/* Menú móvil expandido (sin cambios relevantes para esta animación) */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div

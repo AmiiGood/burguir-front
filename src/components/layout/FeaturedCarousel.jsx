@@ -46,7 +46,7 @@ export const getTopProducts = (
         (product) => product.type === "A"
       );
       break;
-    default: // popularidad o logros
+    default:
       filteredProducts.sort((a, b) => (b.hoursPlayed || b.achievements) - (a.hoursPlayed || a.achievements));
   }
   return filteredProducts.slice(0, limit);
@@ -57,7 +57,7 @@ const FeaturedCarousel = ({
   filterType = "achievements",
   limit = 5,
   customFilter = null,
-  autoplaySpeed = 7000, // Un poco más de tiempo para videos
+  autoplaySpeed = 7000,
   showControls = true,
   showIndicators = true,
   height = "600px",
@@ -77,8 +77,8 @@ const FeaturedCarousel = ({
       product.discount > 0
         ? `Ahorra un ${product.discount}% en esta cuenta premium`
         : "Cuenta premium con todos los beneficios",
-    image: product.image, // Fallback image
-    youtubeVideoId: product.youtubeVideoId, // YouTube video ID
+    image: product.image,
+    youtubeVideoId: product.youtubeVideoId,
     price: product.price,
     discount: product.discount,
   }));
@@ -141,7 +141,6 @@ const FeaturedCarousel = ({
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
               >
-                {/* Efectos visuales de fondo */}
                 <div className="absolute inset-0 z-10 overflow-hidden opacity-30 pointer-events-none">
                   <NeonLine direction="horizontal" className="top-1/4" />
                   <NeonLine direction="horizontal" className="bottom-1/4" />
@@ -150,26 +149,24 @@ const FeaturedCarousel = ({
                 </div>
                 <Particles className="z-10 opacity-30 pointer-events-none" />
 
-                {/* Contenedor para el fondo (video/imagen) y su superposición de brillo */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
                   <motion.div
                     className="w-full h-full"
                     initial={{ scale: 1.05 }}
                     animate={{ scale: 1 }}
-                    transition={{ duration: 8 }} // Animación sutil de zoom para el fondo
+                    transition={{ duration: 8 }}
                   >
                     {slide.youtubeVideoId ? (
                       <div className="w-full h-full relative">
                         <iframe
                           key={slide.youtubeVideoId}
-                          className="absolute top-0 left-0 w-full h-full pointer-events-none" // pointer-events-none para que no interfiera con los clics
+                          className="absolute top-0 left-0 w-full h-full pointer-events-none"
                           src={`https://www.youtube.com/embed/${slide.youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${slide.youtubeVideoId}&controls=0&playsinline=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3`}
                           frameBorder="0"
                           allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen={false} // Background videos usually don't need fullscreen
+                          allowFullScreen={false}
                           title={slide.title + " background video"}
                         ></iframe>
-                        {/* Superposición para el efecto de brillo/oscuridad */}
                         <div className="absolute inset-0 w-full h-full bg-black opacity-25 pointer-events-none"></div>
                       </div>
                     ) : (
@@ -180,18 +177,15 @@ const FeaturedCarousel = ({
                           className="w-full h-full object-cover object-center"
                           style={{ objectPosition: "center center" }}
                         />
-                        {/* Superposición para el efecto de brillo/oscuridad */}
                         <div className="absolute inset-0 w-full h-full bg-black opacity-25 pointer-events-none"></div>
                       </div>
                     )}
                   </motion.div>
                 </div>
 
-                {/* Gradiente oscuro sobre el fondo para legibilidad del texto */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10 pointer-events-none"></div>
 
 
-                {/* Contenido de texto y botones */}
                 <div className="absolute inset-0 z-20 flex items-center">
                   <div className="container mx-auto px-6 md:px-12">
                     <motion.div
@@ -249,12 +243,12 @@ const FeaturedCarousel = ({
                             onProductClick && onProductClick(slide.id)
                           }
                         >
-                          <ShoppingCart size={18} className="mr-2" /> {/* Icono con margen */}
+                          <ShoppingCart size={18} className="mr-2" />
                           <span>Comprar Ahora</span>
                         </NeonButton>
                         <NeonButton primary={false}>
                           <span>Ver Detalles</span>
-                          <ArrowRight size={18} className="ml-2" /> {/* Icono con margen */}
+                          <ArrowRight size={18} className="ml-2" />
                         </NeonButton>
                       </div>
                     </motion.div>
@@ -265,7 +259,6 @@ const FeaturedCarousel = ({
         )}
       </AnimatePresence>
 
-      {/* Controles e indicadores */}
       {showControls && slides.length > 1 && (
          <>
           <motion.button
@@ -296,10 +289,10 @@ const FeaturedCarousel = ({
       )}
       {showIndicators && slides.length > 1 && (
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
-          {slides.map((_, index) => ( // No necesitamos 'slide' aquí, solo el índice
+          {slides.map((_, index) => (
             <motion.button
               aria-label={`Ir al slide ${index + 1}`}
-              key={`indicator-${slides[index].id}`} // Usar ID del slide para key más estable
+              key={`indicator-${slides[index].id}`}
               className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                 index === currentSlide ? "bg-white" : "bg-white/40 hover:bg-white/70"
               }`}
