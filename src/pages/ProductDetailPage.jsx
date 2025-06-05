@@ -6,7 +6,6 @@ import Footer from "../components/layout/Footer";
 import PreFooter from "../components/layout/PreFooter";
 import BackButton from "../components/product/BackButton";
 import ProductGallery from "../components/product/ProductGallery";
-import ProductVideoEmbed from "../components/product/ProductVideoEmbed";
 import ProductInformation from "../components/product/ProductInformation";
 import RelatedProductsSection from "../components/product/RelatedProductsSection";
 import LoadingState from "../components/product/LoadingState";
@@ -59,11 +58,10 @@ const ProductDetailPage = () => {
     if (currentProduct) {
       setProduct(currentProduct);
 
-      const initialGalleryImages = [
-        currentProduct.image,
-        currentProduct.image2,
-        currentProduct.image3,
-      ].filter(Boolean);
+      const initialGalleryImages =
+        currentProduct.galleryImages && currentProduct.galleryImages.length > 0
+          ? currentProduct.galleryImages
+          : [currentProduct.image].filter(Boolean);
 
       setCurrentImage(
         initialGalleryImages.length > 0
@@ -131,9 +129,11 @@ const ProductDetailPage = () => {
     );
   }
 
-  const galleryImages = [product.image, product.image2, product.image3].filter(
-    Boolean
-  );
+  const imagesForGallery =
+    product.galleryImages && product.galleryImages.length > 0
+      ? product.galleryImages
+      : [product.image].filter(Boolean);
+
   const descriptionForInfo =
     product.longDescription || getProductDescription(productId, allProducts);
 
@@ -147,17 +147,12 @@ const ProductDetailPage = () => {
           <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 items-start">
             <div className="space-y-6 mb-8 lg:mb-0">
               <ProductGallery
-                images={galleryImages}
+                images={imagesForGallery}
                 productTitle={product.title}
                 currentImage={currentImage}
                 onImageSelect={setCurrentImage}
+                youtubeVideoId={product.youtubeVideoId}
               />
-              {product.youtubeVideoId && (
-                <ProductVideoEmbed
-                  videoId={product.youtubeVideoId}
-                  productTitle={product.title}
-                />
-              )}
             </div>
 
             <ProductInformation

@@ -58,6 +58,11 @@ import persona5ImagePreview from "../assets/previews/persona5.gif";
 import elysiumImagePreview from "../assets/previews/discoelysium.gif";
 import deathstrandingImagePreview from "../assets/previews/deathStranding.gif";
 
+//Gallery Images
+import galleryImageTlou2_1 from "../assets/images/galleryImages/tlou2_1.webp";
+import galleryImageTlou2_2 from "../assets/images/galleryImages/tlou2_2.webp";
+import galleryImageTlou2_3 from "../assets/images/galleryImages/tlou2_3.webp";
+
 export const products = [
   {
     id: 1,
@@ -71,6 +76,12 @@ export const products = [
     image: tlou2Image,
     youtubeVideoId: "O6MdexNSy3o",
     hoverPreview: tlou2Preview,
+    galleryImages: [
+      tlou2Image,
+      galleryImageTlou2_1,
+      galleryImageTlou2_2,
+      galleryImageTlou2_3,
+    ],
     type: "AAA",
   },
   {
