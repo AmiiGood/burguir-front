@@ -11,6 +11,7 @@ import FAQPage from "./pages/FAQPage";
 import CatalogPage from "./pages/CatalogoPage";
 import OffersPage from "./pages/OfertasPage";
 import CartPage from "./pages/CartPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import "./index.css";
 import { CartProvider } from "./components/product/CartContext";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/ofertas" element={<OffersPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/producto/:id" element={<ProductDetailPage />} />
           <Route path="/404" element={<Error404Page />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
