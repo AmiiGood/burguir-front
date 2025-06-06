@@ -126,28 +126,11 @@ const ProductCard = ({ product }) => {
                 transition={{ duration: 0.2 }}
               >
                 {isPreviewLoading && (
-                  <div className="absolute z-10 flex items-center justify-center w-full h-full">
-                    <motion.img
-                      src={loadingCatImage}
-                      alt="Cargando vista previa..."
-                      className="w-24 h-24"
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{
-                        scale: 1,
-                        opacity: 1,
-                        rotate: [0, 15, -15, 15, 0],
-                      }}
-                      transition={{
-                        scale: { type: "spring", stiffness: 300 },
-                        opacity: { duration: 0.3 },
-                        rotate: {
-                          repeat: Infinity,
-                          duration: 1.5,
-                          ease: "easeInOut",
-                        },
-                      }}
-                    />
-                  </div>
+                  <img
+                    src={loadingCatImage}
+                    alt="Cargando vista previa..."
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 )}
                 {hasVideoPreview ? (
                   <motion.video
