@@ -48,7 +48,7 @@ import minecraftPreview from "../assets/previews/minecraft.gif";
 import strayPreview from "../assets/previews/stray.gif";
 import assassinsCreedImagePreview from "../assets/previews/acshadows.gif";
 import doomEternalImagePreview from "../assets/previews/doom.gif";
-import finalFantasyImagePreview from "../assets/previews/finalfantasyVII.gif";
+import finalFantasyImagePreview from "../assets/previews/finalFantasyVII.gif";
 import controlImagePreview from "../assets/previews/control.gif";
 import celestePreview from "../assets/previews/celeste.gif";
 import baldursImagePreview from "../assets/previews/baldurs.gif";
