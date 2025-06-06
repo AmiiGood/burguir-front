@@ -62,6 +62,21 @@ import deathstrandingImagePreview from "../assets/previews/deathStranding.gif";
 import galleryImageTlou2_1 from "../assets/images/galleryImages/tlou2_1.webp";
 import galleryImageTlou2_2 from "../assets/images/galleryImages/tlou2_2.webp";
 import galleryImageTlou2_3 from "../assets/images/galleryImages/tlou2_3.webp";
+import galleryImageGTAV_1 from "../assets/images/galleryImages/gtaV_1.jpg";
+import galleryImageGTAV_2 from "../assets/images/galleryImages/gtaV_2.jpg";
+import galleryImageGTAV_3 from "../assets/images/galleryImages/gtaV_3.jpg";
+import galleryImageCyberpunk_1 from "../assets/images/galleryImages/cyberpunk_1.jpg";
+import galleryImageCyberpunk_2 from "../assets/images/galleryImages/cyberpunk_2.jpg";
+import galleryImageCyberpunk_3 from "../assets/images/galleryImages/cyberpunk_3.jpg";
+import galleryImageEldenring_1 from "../assets/images/galleryImages/eldenring_1.jpg";
+import galleryImageEldenring_2 from "../assets/images/galleryImages/eldenring_2.jpg";
+import galleryImageEldenring_3 from "../assets/images/galleryImages/eldenring_3.jpg";
+import galleryImageRDR2_1 from "../assets/images/galleryImages/rdr2_1.jpg";
+import galleryImageRDR2_2 from "../assets/images/galleryImages/rdr2_2.jpg";
+import galleryImageRDR2_3 from "../assets/images/galleryImages/rdr2_3.jpg";
+import galleryImageHorizon_1 from "../assets/images/galleryImages/horizon_1.jpg";
+import galleryImageHorizon_2 from "../assets/images/galleryImages/horizon_2.jpg";
+import galleryImageHorizon_3 from "../assets/images/galleryImages/horizon_3.jpg";
 
 export const products = [
   {
@@ -96,6 +111,12 @@ export const products = [
     image: gtaVImage,
     youtubeVideoId: "VNbONMSObfs",
     hoverPreview: gtaVPreview,
+    galleryImages: [
+      gtaVImage,
+      galleryImageGTAV_1,
+      galleryImageGTAV_2,
+      galleryImageGTAV_3,
+    ],
     type: "AAA",
   },
   {
@@ -110,6 +131,12 @@ export const products = [
     image: cyberpunkImage,
     youtubeVideoId: "1gvGn8NtIpE",
     hoverPreview: cyberpunkPreview,
+    galleryImages: [
+      cyberpunkImage,
+      galleryImageCyberpunk_1,
+      galleryImageCyberpunk_2,
+      galleryImageCyberpunk_3,
+    ],
     type: "AAA",
   },
   {
@@ -124,6 +151,12 @@ export const products = [
     image: eldenringImage,
     youtubeVideoId: "E3Huy2cdih0",
     hoverPreview: eldenringPreview,
+    galleryImages: [
+      eldenringImage,
+      galleryImageEldenring_1,
+      galleryImageEldenring_2,
+      galleryImageEldenring_3,
+    ],
     type: "AAA",
   },
   {
@@ -138,6 +171,12 @@ export const products = [
     image: rdr2Image,
     youtubeVideoId: "SXvQ1nK4oxk",
     hoverPreview: rdr2Preview,
+    galleryImages: [
+      rdr2Image,
+      galleryImageRDR2_1,
+      galleryImageRDR2_2,
+      galleryImageRDR2_3,
+    ],
     type: "AAA",
   },
   {
@@ -152,6 +191,12 @@ export const products = [
     image: horizonImage,
     youtubeVideoId: "rvDu47W8qT0",
     hoverPreview: horizonPreview,
+    galleryImages:[
+      horizonImage,
+      galleryImageHorizon_1,
+      galleryImageHorizon_2,
+      galleryImageHorizon_3,
+    ],
     type: "AAA",
   },
   {
