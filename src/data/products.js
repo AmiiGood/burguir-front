@@ -35,7 +35,7 @@ import cyberpunkPreview from "../assets/previews/cyberpunk.gif";
 import eldenringPreview from "../assets/previews/eldenring.gif";
 import rdr2Preview from "../assets/previews/rdr2.gif";
 import horizonPreview from "../assets/previews/horizon.gif";
-import gowRagnarokPreview from "../assets/previews/gowRagnarok.gif";
+import gowRagnarokPreview from "../assets/previews/gowragnarok.gif";
 import thewitcher4Preview from "../assets/previews/thewitcher4.gif";
 import ghostOfTsushimaPreview from "../assets/previews/ghostoftsushima.gif";
 import spidermanPreview from "../assets/previews/spiderman2.gif";
