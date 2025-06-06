@@ -48,7 +48,7 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      text: "soporte@gamevault.com",
+      text: "soporte@koari.com",
       href: "redireccion",
     },
     {
@@ -84,10 +84,7 @@ const Footer = () => {
               className="mb-6"
             >
               <h3 className="text-2xl font-bold text-white mb-2">
-                Game
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500">
-                  Vault
-                </span>
+                Koari
               </h3>
               <div className="h-1 w-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded mb-4" />
               <p className="text-gray-400 mb-6">
@@ -212,7 +209,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} GameVault. Todos los derechos
+            © {new Date().getFullYear()} Koari. Todos los derechos
             reservados. Diseñado con esfuerzo para nuestra comunidad.
           </p>
         </div>

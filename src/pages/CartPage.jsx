@@ -83,7 +83,7 @@ const CartPage = () => {
   };
 
   const applyCoupon = () => {
-    if (couponCode.toLowerCase() === "gamevault10") {
+    if (couponCode.toLowerCase() === "koari") {
       setCouponApplied(true);
       setCouponError(false);
     } else {
@@ -413,7 +413,7 @@ const CartPage = () => {
                       >
                         {couponApplied
                           ? "¡Cupón aplicado correctamente! 10% de descuento."
-                          : "El código ingresado no es válido. Prueba con GAMEVAULT10"}
+                          : "El código ingresado no es válido. Prueba con KOARI"}
                       </motion.div>
                     )}
                   </AnimatePresence>

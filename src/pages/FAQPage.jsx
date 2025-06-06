@@ -367,7 +367,7 @@ const FAQPage = () => {
                     href="#"
                     className="text-indigo-400 hover:text-indigo-300 flex items-center justify-center"
                   >
-                    soporte@gamevault.com
+                    soporte@koari.com
                   </a>
                 </motion.div>
 

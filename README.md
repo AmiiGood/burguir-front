@@ -1,8 +1,8 @@
-# 🎮 GameVault
+# Koari
 
 ## Descripción
 
-GameVault es una plataforma moderna desarrollada con React + Vite que ofrece a los usuarios la posibilidad de adquirir acceso a cuentas de Steam verificadas a precios competitivos. Nuestro sitio proporciona una experiencia de compra fluida, segura y con entrega inmediata de credenciales tras la compra.
+Koari es una plataforma moderna desarrollada con React + Vite que ofrece a los usuarios la posibilidad de adquirir acceso a cuentas de Steam verificadas a precios competitivos. Nuestro sitio proporciona una experiencia de compra fluida, segura y con entrega inmediata de credenciales tras la compra.
 
 ## ✨ Características Principales
 
@@ -126,9 +126,9 @@ Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](L
 
 Si tienes preguntas o necesitas ayuda, no dudes en contactarnos:
 
-- 📧 Email: soporte@gamevault.com
+- 📧 Email: soporte@koari.com
 - 📱 Soporte: Disponible 24/7 a través de redes sociales
 
 ---
 
-⭐ **¡Gracias por elegir GameVault!** ⭐
+⭐ **¡Gracias por elegir Koari!** ⭐

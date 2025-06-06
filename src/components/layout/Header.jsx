@@ -85,10 +85,7 @@ const Header = () => {
           >
             <div className="flex flex-col">
               <span className="text-white font-bold text-xl tracking-wide">
-                GameVault
-              </span>
-              <span className="text-indigo-300 text-xs tracking-wider -mt-1">
-                CUENTAS PREMIUM
+                Koari
               </span>
             </div>
           </motion.div>
