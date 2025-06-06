@@ -55,7 +55,7 @@ import baldursImagePreview from "../assets/previews/baldurs.gif";
 import falloutImagePreview from "../assets/previews/fallout4.gif";
 import unchartedImagePreview from "../assets/previews/uncharted4.gif";
 import persona5ImagePreview from "../assets/previews/persona5.gif";
-import elysiumImagePreview from "../assets/previews/discoelysium.gif";
+import elysiumImagePreview from "../assets/previews/discoElysium.gif";
 import deathstrandingImagePreview from "../assets/previews/deathStranding.gif";
 
 //Gallery Images
