@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
   const hasVideoPreview =
     product.hoverPreview && product.hoverPreview.toLowerCase().endsWith(".mp4");
   const hasGifPreview =
-    product.hoverPreview && product.hoverPreview.toLowerCase().endsWith(".gif");
+    product.hoverPreview && product.hoverPreview.toLowerCase().endsWith(".webp");
   const hasValidPreview =
     product.hoverPreview && (hasVideoPreview || hasGifPreview);
   
