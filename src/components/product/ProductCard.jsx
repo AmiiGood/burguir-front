@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
+import loadingCatImage from "../../assets/previews/gato-loading.webp";
 
 const ProductCard = ({ product }) => {
   const [showAddAnimation, setShowAddAnimation] = useState(false);
@@ -50,10 +51,11 @@ const ProductCard = ({ product }) => {
   const hasVideoPreview =
     product.hoverPreview && product.hoverPreview.toLowerCase().endsWith(".mp4");
   const hasGifPreview =
-    product.hoverPreview && product.hoverPreview.toLowerCase().endsWith(".webp");
+    product.hoverPreview &&
+    product.hoverPreview.toLowerCase().endsWith(".webp");
   const hasValidPreview =
     product.hoverPreview && (hasVideoPreview || hasGifPreview);
-  
+
   const shouldShowPreviewContainer = isHovering && hasValidPreview;
 
   const handleMouseEnter = () => {
@@ -65,27 +67,28 @@ const ProductCard = ({ product }) => {
 
   const handleMouseLeave = () => {
     setIsHovering(false);
-    if (isPreviewLoading && !shouldShowPreviewContainer) { 
-        setIsPreviewLoading(false);
+    if (isPreviewLoading && !shouldShowPreviewContainer) {
+      setIsPreviewLoading(false);
     }
   };
-  
+
   const handlePreviewMediaLoaded = () => {
     setIsPreviewLoading(false);
   };
 
   const handlePreviewMediaError = (mediaType) => {
-    console.error(`Error al cargar ${mediaType} preview:`, product.hoverPreview);
-    setIsPreviewLoading(false); 
+    console.error(
+      `Error al cargar ${mediaType} preview:`,
+      product.hoverPreview
+    );
+    setIsPreviewLoading(false);
   };
 
-
   useEffect(() => {
-    if (isHovering && hasValidPreview && !product.hoverPreview) { 
-        setIsPreviewLoading(false);
+    if (isHovering && hasValidPreview && !product.hoverPreview) {
+      setIsPreviewLoading(false);
     }
   }, [product.hoverPreview, isHovering, hasValidPreview]);
-
 
   return (
     <motion.div
@@ -115,48 +118,67 @@ const ProductCard = ({ product }) => {
             )}
             {shouldShowPreviewContainer && (
               <motion.div
-                key="preview-container" 
-                className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-700" 
+                key="preview-container"
+                className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-700"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
                 {isPreviewLoading && (
-                  <div className="absolute z-10 text-white">
-                    <Loader2 size={48} className="animate-spin" />
+                  <div className="absolute z-10 flex items-center justify-center w-full h-full">
+                    <motion.img
+                      src={loadingCatImage}
+                      alt="Cargando vista previa..."
+                      className="w-24 h-24"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{
+                        scale: 1,
+                        opacity: 1,
+                        rotate: [0, 15, -15, 15, 0],
+                      }}
+                      transition={{
+                        scale: { type: "spring", stiffness: 300 },
+                        opacity: { duration: 0.3 },
+                        rotate: {
+                          repeat: Infinity,
+                          duration: 1.5,
+                          ease: "easeInOut",
+                        },
+                      }}
+                    />
                   </div>
                 )}
                 {hasVideoPreview ? (
                   <motion.video
                     key={`video-${product.id}`}
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover"
                     src={product.hoverPreview}
                     autoPlay
                     loop
                     muted
                     playsInline
                     onLoadedData={handlePreviewMediaLoaded}
-                    onError={() => handlePreviewMediaError('video')}
-                    initial={{ opacity: isPreviewLoading ? 0 : 1 }} 
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }} 
-                  />
-                ) : hasGifPreview ? ( 
-                  <motion.img
-                    key={`gif-${product.id}`} 
-                    className="w-full h-full object-cover" 
-                    src={product.hoverPreview}
-                    alt={`${product.title} preview`}
-                    onLoad={handlePreviewMediaLoaded}
-                    onError={() => handlePreviewMediaError('GIF')}
+                    onError={() => handlePreviewMediaError("video")}
                     initial={{ opacity: isPreviewLoading ? 0 : 1 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   />
-                ) : null} 
+                ) : hasGifPreview ? (
+                  <motion.img
+                    key={`gif-${product.id}`}
+                    className="w-full h-full object-cover"
+                    src={product.hoverPreview}
+                    alt={`${product.title} preview`}
+                    onLoad={handlePreviewMediaLoaded}
+                    onError={() => handlePreviewMediaError("GIF")}
+                    initial={{ opacity: isPreviewLoading ? 0 : 1 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  />
+                ) : null}
               </motion.div>
             )}
           </AnimatePresence>
